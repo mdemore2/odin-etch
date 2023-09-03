@@ -24,4 +24,13 @@ function addPixels(row, size){
     return row;
 }
 
-buildBoard(10);
+function colorPixel(e){
+    e.currentTarget.style = "background-color:black";
+}
+
+buildBoard(16);
+
+let pixels = document.querySelectorAll('.pixel');
+pixels.forEach((pixel) => {
+    pixel.addEventListener('mouseover', colorPixel);
+});
