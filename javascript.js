@@ -1,5 +1,13 @@
 const board = document.querySelector('.board');
 
+function resize() {
+    let size = parseInt(prompt('Please enter desired board size:'));
+    if ((!Number.isInteger(size) || size < 0 || size > 100)){
+        size = 16;
+    }
+    board.replaceChildren();
+    buildBoard(size);
+}
 
 function buildBoard(size) {
     let row = document.createElement('div');
@@ -11,6 +19,11 @@ function buildBoard(size) {
         board.appendChild(newRow);
         
     }
+
+    let pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.addEventListener('mouseover', colorPixel);
+    });
 }
 
 function addPixels(row, size){
@@ -30,7 +43,3 @@ function colorPixel(e){
 
 buildBoard(16);
 
-let pixels = document.querySelectorAll('.pixel');
-pixels.forEach((pixel) => {
-    pixel.addEventListener('mouseover', colorPixel);
-});
