@@ -37,8 +37,19 @@ function addPixels(row, size){
     return row;
 }
 
+const randBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+
 function colorPixel(e){
-    e.currentTarget.style = "background-color:black";
+    let color = getRandomColor();
+    e.currentTarget.style = `background-color:${color}`;
+}
+
+function getRandomColor(){
+    let r = randBetween(0, 255);
+    let g = randBetween(0, 255);
+    let b = randBetween(0, 255);
+    let rgb = `rgb(${r},${g},${b})`;
+    return rgb;
 }
 
 buildBoard(16);
